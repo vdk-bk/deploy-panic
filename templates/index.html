@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Panic Disorder Detection</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		font-size:large;
+		background-image: url(C:\Users\DELL\Model\static\What.png);
+		
+		/* background-color: #405D72; */
+	}
+
+	.login{
+		top: 10%;
+        font-size: large;
+	    margin-left: 43%;
+		margin-top: 3%;
+		border-right: 200px;
+	}
+
+	#gender{
+		top: 50px;
+		display: block;
+		margin-top: 4%; 
+		border: none;
+		border-radius: 25px;
+		background-color: #EEEEEE;
+		width: 200px; /* Adjust width as needed */
+      height: 100px; /* Adjust height as needed */
+      background-color: #f0f0f0;
+	  font-family: cursive;
+      text-align: center; /* Optional: Center text horizontally */
+      line-height: 100px; /* Optional: Center text vertically */
+	}
+	#sev{
+		top: 50px;
+		border-radius: 25px;
+		display: block;
+		margin-top: 4%; 
+		border: none;
+		background-color: #EEEEEE;
+		width: 200px; /* Adjust width as needed */
+      height: 100px; /* Adjust height as needed */
+      background-color: #f0f0f0;
+	  font-family: cursive;
+      text-align: center; /* Optional: Center text horizontally */
+      line-height: 100px; /* Optional: Center text vertically */
+	}
+	#lyf{
+		top: 50px;
+		border-radius: 25px;
+		display: block;
+		margin-top: 4%; 
+		border: none;
+		font-family: cursive;
+		background-color: #EEEEEE;
+		width: 200px; /* Adjust width as needed */
+      height: 100px; /* Adjust height as needed */
+      background-color: #f0f0f0;
+      text-align: center; /* Optional: Center text horizontally */
+      line-height: 100px; /* Optional: Center text vertically */
+	}
+	#symp{
+		top: 50px;
+		display: block;
+		border-radius: 25px;
+		margin-top: 4%; 
+		border: none;
+		font-family: cursive;
+		background-color: #EEEEEE;
+		width: 200px; /* Adjust width as needed */
+      height: 100px; /* Adjust height as needed */
+      background-color: #f0f0f0;
+      text-align: center; /* Optional: Center text horizontally */
+      line-height: 100px; /* Optional: Center text vertically */
+	}
+	#med{
+		top: 50px;
+		/* display: block; */
+		margin-top: 4%; 
+		border-radius: 25px;
+		border: none;
+		font-family: cursive;
+		background-color: #EEEEEE;
+		width: 200px; /* Adjust width as needed */
+        height: 100px; /* Adjust height as needed */
+        background-color: #f0f0f0;
+        text-align: center; /* Optional: Center text horizontally */
+        line-height: 100px; /* Optional: Center text vertically */
+	} 
+	#btn{
+		top: 50px;
+		display: block;
+		margin-top: 4%; 
+		margin-left: 8%;
+		background-color: #D1D8C5;
+		border-radius: 5px;
+		padding: 1%;  
+		border: none; 
+		font-family: cursive;
+      text-align: center; /* Optional: Center text horizontally */
+
+
+	}
+	#age{
+		top: 50px;
+		border-radius: 25px;
+		display: block;
+		margin-top: 4%; 
+		border: none;
+		font-family: cursive;
+		background-color: #EEEEEE;
+		width: 200px; /* Adjust width as needed */
+      height: 100px; /* Adjust height as needed */
+      background-color: #f0f0f0;
+      text-align: center; /* Optional: Center text horizontally */
+      line-height: 100px; /* Optional: Center text vertically */
+	}
+
+	#btn:hover{
+		background-color: yellowgreen;
+		transition: 0.2;
+	}
+
+    #txt{
+	color: #7E8EF1;
+	text-align: center;
+	margin-left: 23%;
+	font-size: 70px;
+	margin-top: 20px;
+	font-weight: bold;
+	font-family: cursive;
+    }
+
+
+
+
+
+	
+
+</style>
+</head>
+
+<body class="img">
+	<h7 id="txt">Panic Disorder Detection</h7>
+ <div class="login" >
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action= "/y_predict" method="post" id="form">
+        <input type="text" name="Age" placeholder="Age" required="required" id="age"/>
+
+		<select name="Gender" required="required" id="gender">
+		  <option value="">Select Gender </option>
+		  <option value= 1>Male</option>
+		  <option value=  0>Female</option>
+		</select>
+		<select name="Symptoms" required="required" id="symp">
+		  <option value="">Symptoms </option>
+		  <option value= 0>Chest pain </option>
+		  <option value=  1>Dizziness </option>
+		  <option value=  2>Fear of losing control</option>
+		  <option value=  3>Panic attacks</option>
+		  <option value=  4>Shortness of breath</option>
+		</select>
+		
+		<select name="Severity" required="required" id="sev">
+		  <option value="">Severity </option>
+		  <option value= 0>Mild</option>
+		  <option value=  2>Moderate</option>
+		  <option value=  1>Severe</option>
+		</select>
+
+		<select name="Medical History" required="required" id="med">
+		  <option value="">Medical History </option>
+		  <option value= 2>Heart disease  </option>
+		  <option value= 0>Asthma </option>
+		  <option value= 1>Diabetes</option>
+		</select>
+
+		<select name="Lifestyle Factors" required="required" id="lyf">
+		  <option value="">Lifestyle Factors </option>
+		  <option value= 2>Sleep quality </option>
+		  <option value= 0>Exercise</option>
+		  <option value= 1>Diet</option>
+		</select>
+
+
+        
+
+    <div>
+
+        <button type="submit"  id="btn">Predict</button>
+    </div>
+    <!-- {{ prediction_text }} -->
+	<h5>{{ result }} <h5/>
+   <br>
+   <br>
+
+ </div>
+
+
+</body>
+</html>
+
